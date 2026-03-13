@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Cuenta Regresiva INTI</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI, Arial;
+color:white;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+overflow:hidden;
+
+/* fondo corporativo animado */
+
+background:linear-gradient(-45deg,#000000,#2d5aa0,#1c3766,#244a88);
+background-size:400% 400%;
+animation:fondo 50s ease infinite;
+}
+
+@keyframes fondo{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+#logo{
+width:550px;      /* tamaño del logo */
+margin-bottom:10px;
+margin-top:40px;
+filter:
+drop-shadow(0px 0px 10px rgba(255,255,255,0.6))
+drop-shadow(0px 0px 25px rgba(0,255,200,0.6))
+drop-shadow(0px 0px 45px rgba(0,255,200,0.4));
+
+animation: brilloLogo 4s ease-in-out infinite;
+}
+
+.titulo{
+font-size:80px;
+letter-spacing:4px;
+font-weight:600;
+
+position:relative;
+top:0px;   /* mueve solo el título hacia abajo */
+}
+
+#contador{
+display:flex;
+gap:120px;
+}
+
+.bloque{
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.numero{
+font-size:200px;
+font-weight:700;
+text-shadow:0px 0px 25px rgba(255,255,255,0.3);
+transition:0.3s;
+}
+
+.label{
+font-size:42px;
+margin-top:10px;
+color:#dbe6ff;
+letter-spacing:3px;
+}
+
+.final{
+font-size:120px;
+color:#00ffb3;
+font-weight:bold;
+}
+
+
+
+
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+
+background: radial-gradient(circle at center,
+#3e6aa8 0%,
+#2f558c 40%,
+#1f3e6b 100%);
+
+color:white;
+overflow:hidden;
+}
+
+.pantallaFinal{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+height:100vh;
+text-align:center;
+}
+
+.mensajeFinal{
+
+font-size:150px;
+font-weight:800;
+color:white;
+
+text-shadow:
+0px 0px 20px rgba(255,255,255,0.6),
+0px 0px 40px rgba(0,255,200,0.4);
+
+margin-bottom:80px;
+
+animation:entradaTexto 2s ease;
+}
+
+.logoFinal{
+
+width:600px;
+
+filter:
+drop-shadow(0px 0px 20px rgba(255,255,255,0.6))
+drop-shadow(0px 0px 40px rgba(0,255,200,0.4));
+
+animation:logoEntrada 3s ease;
+}
+
+@keyframes entradaTexto{
+
+from{
+opacity:0;
+transform:translateY(-40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+@keyframes logoEntrada{
+
+from{
+opacity:0;
+transform:scale(0.7);
+}
+
+to{
+opacity:1;
+transform:scale(1);
+}
+
+}
+
+
+
+
+
+</style>
+</head>
+
+<body>
+
+<img id="logo" src="./logo.png">
+
+<div class="titulo">
+CUENTA REGRESIVA
+</div>
+
+<div id="contador">
+
+<div class="bloque">
+<div class="numero" id="dias">0</div>
+<div class="label">DÍAS</div>
+</div>
+
+<div class="bloque">
+<div class="numero" id="horas">0</div>
+<div class="label">HORAS</div>
+</div>
+
+<div class="bloque">
+<div class="numero" id="minutos">0</div>
+<div class="label">MIN</div>
+</div>
+
+<div class="bloque">
+<div class="numero" id="segundos">0</div>
+<div class="label">SEG</div>
+</div>
+
+</div>
+
+<script>
+
+const fechaObjetivo = new Date(2026, 2, 15, 0, 0, 0).getTime();
+
+const contador = setInterval(function(){
+
+const ahora = new Date().getTime();
+const distancia = fechaObjetivo - ahora;
+
+const dias = Math.floor(distancia / (1000*60*60*24));
+const horas = Math.floor((distancia % (1000*60*60*24))/(1000*60*60));
+const minutos = Math.floor((distancia % (1000*60*60))/(1000*60));
+const segundos = Math.floor((distancia % (1000*60))/1000);
+
+document.getElementById("dias").innerHTML = dias;
+document.getElementById("horas").innerHTML = horas;
+document.getElementById("minutos").innerHTML = minutos;
+document.getElementById("segundos").innerHTML = segundos;
+
+if(distancia < 0){
+
+clearInterval(contador);
+
+document.body.innerHTML = `
+<div class="pantallaFinal">
+
+<div class="mensajeFinal">
+¡FELIZ 90 AÑOS<br>DROGUERIA INTI!
+</div>
+
+<img src="logo.png" class="logoFinal">
+
+</div>
+
+`;
+
+}
+
+},1000);
+
+</script>
+
+</body>
+</html>
