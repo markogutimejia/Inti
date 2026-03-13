@@ -167,6 +167,34 @@ transform:scale(1);
 
 }
 
+
+.latido{
+animation:latido 1s ease;
+}
+
+@keyframes latido{
+
+0%{
+transform:scale(0.7);
+opacity:0.5;
+}
+
+50%{
+transform:scale(1.2);
+opacity:1;
+}
+
+100%{
+transform:scale(1);
+opacity:1;
+}
+
+}
+
+
+
+
+  
 @media (max-width:900px){
 
 #contador{
@@ -242,6 +270,29 @@ const horas = Math.floor((distancia % (1000*60*60*24))/(1000*60*60));
 const minutos = Math.floor((distancia % (1000*60*60))/(1000*60));
 const segundos = Math.floor((distancia % (1000*60))/1000);
 
+if(distancia <= 20000){
+
+document.getElementById("logo").style.display="none";
+
+document.querySelector(".titulo").style.display="none";
+
+document.getElementById("dias").parentElement.style.display="none";
+document.getElementById("horas").parentElement.style.display="none";
+document.getElementById("minutos").parentElement.style.display="none";
+
+document.querySelector("#segundos + .label").style.display="none";
+
+let seg = document.getElementById("segundos");
+
+seg.style.fontSize="30vw";
+
+seg.classList.remove("latido");
+void seg.offsetWidth;
+seg.classList.add("latido");
+
+}
+
+  
 document.getElementById("dias").innerHTML = dias;
 document.getElementById("horas").innerHTML = horas;
 document.getElementById("minutos").innerHTML = minutos;
