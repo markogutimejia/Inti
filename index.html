@@ -33,7 +33,11 @@ animation:fondo 50s ease infinite;
 }
 
 #logo{
-width:550px;      /* tamaño del logo */
+/*width:550px;       tamaño del logo */
+width:40vw;
+max-width:650px;
+min-width:200px;
+  
 margin-bottom:10px;
 margin-top:40px;
 filter:
@@ -45,7 +49,8 @@ animation: brilloLogo 4s ease-in-out infinite;
 }
 
 .titulo{
-font-size:80px;
+/* font-size:80px;*/
+font-size:5vw;
 letter-spacing:4px;
 font-weight:600;
 
@@ -65,14 +70,16 @@ align-items:center;
 }
 
 .numero{
-font-size:200px;
+/*font-size:200px;*/
+font-size:12vw;
 font-weight:700;
 text-shadow:0px 0px 25px rgba(255,255,255,0.3);
 transition:0.3s;
 }
 
 .label{
-font-size:42px;
+/*font-size:42px;*/
+font-size:2.5vw;
 margin-top:10px;
 color:#dbe6ff;
 letter-spacing:3px;
@@ -165,7 +172,29 @@ transform:scale(1);
 }
 
 
+@media (max-width:900px){
 
+#contador{
+gap:40px;
+}
+
+.numero{
+font-size:16vw;
+}
+
+.label{
+font-size:4vw;
+}
+
+.titulo{
+font-size:8vw;
+}
+
+#logo{
+width:60vw;
+}
+
+  
 
 
 </style>
